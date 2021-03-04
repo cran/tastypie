@@ -8,10 +8,13 @@
 #' If you are looking for something more *complex and extravagant* (but probably less
 #' understandable), check out the \code{\link{pie_bake_pro}} function.
 #'
-#' @param data A data frame with two variables (columns):\cr
+#' @param data A data frame (or a tibble) with two variables (columns):\cr
 #' - in the first one there must be the vector of labels;\cr
 #' - in the second one there must be the vector of values.
 #'
+#' Please note that the labels are automatically sorted in alphabetical order.
+#' If you want to specify a particular order, it is recommended to type numbers or
+#' letters before the category names (e.g. "a. category1", "b. category2", ...).\cr
 #' You can use \code{\link{pie_datacheck}} to understand if the data is suitable.
 #' @param template The chosen template.\cr
 #' Type \code{pie_template_list} to display all the available ones for this function.
@@ -71,6 +74,11 @@ pie_bake <- function(
 
   # useful checks:
   pie_datacheck(data)
+
+  if(tibble::is_tibble(data)){
+    data <- as.data.frame(data)
+  }
+
   if(template %in% pie_template_list_pro){
     stop("\n The selected template must be used with the function pie_bake_pro().
  Type pie_template_list to see all the available templates for this function.
