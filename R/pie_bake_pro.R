@@ -23,7 +23,7 @@
 #' @export
 #'
 #' @return
-#' A ggplot object.
+#' A ggplot object (or no value if the chosen template is among the spider chart ones).
 #' In particular, this function returns a pie (or similar) chart according to the
 #' data, the choice of template, and the other specifications provided.
 #'
@@ -55,11 +55,17 @@
 #'   group_name = "GROUPS:"
 #' )
 #'
+#' pie_bake_pro(
+#'   data = example,
+#'   template = "spider2"
+#'   )
+#'
 #'
 #' @importFrom dplyr arrange
 #' @importFrom dplyr desc
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom shadowtext geom_shadowtext
+#' @importFrom fmsb radarchart
 pie_bake_pro <- function(
   data,
   template,
@@ -79,7 +85,7 @@ pie_bake_pro <- function(
  Type pie_template_list_pro to see all the available templates for this function.
  Type pie_template_list to see all the available templates for the function pie_bake().")
   }
-  else if(!template %in% pie_template_list_pro){
+  else if(!template %in% c(pie_template_list_pro)){
     stop("\n The selected template does NOT exist.
  Type pie_template_list_pro to see all the available templates for this function.
  Type pie_template_list to see all the available templates for the function pie_bake().")
@@ -389,5 +395,300 @@ pie_bake_pro <- function(
       ggtitle(title)+
       theme(plot.title = element_text(
         family = "mono", color="black", size=16, face="bold", hjust = 0.5))
+  }
+  # circular barplot ----
+  else if(template == "cirbar1"){
+    data <- data.frame(
+      id = seq(1, length(data$value)),
+      individual = data$group,
+      value = round(data$value/sum(data$value)*100, 0)
+    )
+
+    label_data <- data
+    number_of_bar <- nrow(label_data)
+    angle <-  90 - 360 * (label_data$id-0.5) /number_of_bar
+    label_data$hjust<-ifelse( angle < -90, 1, 0)
+    label_data$angle<-ifelse(angle < -90, angle+180, angle)
+
+    ggplot(data, aes(x=as.factor(id), y=value)) +
+      geom_bar(stat="identity", fill=alpha("darkolivegreen", 5)) +
+      ylim(-10, max(data$value) + 10) +
+      theme_void() +
+      theme(
+        axis.text = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(
+          family = "mono", color="black", size=16, face="bold", hjust = 0.5)
+      ) +
+      coord_polar(start = 0) +
+      geom_shadowtext(
+        data=label_data,
+        aes(x=id, y=value+10, label=individual, hjust=hjust),
+        family = "mono", color="black", fontface="bold", bg.color = "orange",
+        alpha = 1, size = 4,
+        angle= label_data$angle, inherit.aes = FALSE) +
+      ggtitle(title)
+  }
+  else if(template == "cirbar2"){
+    data <- data.frame(
+      id = seq(1, length(data$value)),
+      individual = data$group,
+      value = round(data$value/sum(data$value)*100, 0)
+    )
+    data$individual <- paste(
+      data$individual,
+      scales::label_percent(accuracy = 1)(data$value/sum(data$value)),
+      sep = "\n")
+
+    label_data <- data
+    number_of_bar <- nrow(label_data)
+    angle <-  90 - 360 * (label_data$id-0.5) /number_of_bar
+    label_data$hjust<-ifelse( angle < -90, 1, 0)
+    label_data$angle<-ifelse(angle < -90, angle+180, angle)
+
+    ggplot(data, aes(x=as.factor(id), y=value, fill = as.factor(id))) +
+      geom_bar(stat="identity") +
+      ylim(-10, max(data$value) + 10) +
+      theme_void() +
+      theme(
+        axis.text = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(
+          family = "mono", color="black", size=16, face="bold", hjust = 0.5),
+        legend.position="none"
+      ) +
+      coord_polar(start = 0) +
+      geom_label(
+        data=label_data,
+        aes(x=id, y=value+10, label=individual, hjust=hjust),
+        family = "mono", color="black", fontface="bold",
+        alpha = 1, size = 4,
+        angle= label_data$angle, inherit.aes = FALSE) +
+      ggtitle(title)
+  }
+  else if(template == "cirbar3"){
+    data <- data.frame(
+      id = seq(1, length(data$value)),
+      individual = data$group,
+      value = round(data$value/sum(data$value)*100, 0)
+    )
+
+    label_data <- data
+    number_of_bar <- nrow(label_data)
+    angle <-  90 - 360 * (label_data$id-0.5) /number_of_bar
+    label_data$hjust<-ifelse( angle < -90, 1, 0)
+    label_data$angle<-ifelse(angle < -90, angle+180, angle)
+
+    ggplot(data, aes(x=as.factor(id), y=value, color = as.factor(id))) +
+      geom_bar(stat="identity", fill= "white") +
+      ylim(-10, max(data$value) + 10) +
+      theme_void() +
+      theme(
+        axis.text = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(
+          family = "mono", color="black", size=16, face="bold", hjust = 0.5),
+        legend.position="none"
+      ) +
+      coord_polar(start = 0) +
+      geom_shadowtext(
+        data=label_data,
+        aes(x=id, y=value+10, label=individual, hjust=hjust),
+        family = "mono", color="black", fontface="bold", bg.color = "yellow",
+        alpha = 1, size = 4,
+        angle= label_data$angle, inherit.aes = FALSE) +
+      ggtitle(title)
+  }
+  else if(template == "cirbar4"){
+    data <- data.frame(
+      id = seq(1, length(data$value)),
+      individual = data$group,
+      value = round(data$value/sum(data$value)*100, 0)
+    )
+
+    label_data <- data
+    number_of_bar <- nrow(label_data)
+    angle <-  90 - 360 * (label_data$id-0.5) /number_of_bar
+    label_data$hjust<-ifelse( angle < -90, 1, 0)
+    label_data$angle<-ifelse(angle < -90, angle+180, angle)
+
+    ggplot(data, aes(x=as.factor(id), y=value, color = as.factor(id))) +
+      geom_bar(stat="identity", fill= "black") +
+      ylim(-10, max(data$value) + 10) +
+      theme_void() +
+      theme(
+        axis.text = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(
+          family = "mono", color="black", size=16, face="bold", hjust = 0.5),
+        legend.position="none"
+      ) +
+      coord_polar(start = 0) +
+      geom_label(
+        data=label_data,
+        aes(x=id, y=value+10, label=individual, hjust=hjust),
+        family = "mono", color="white", fontface="bold", bg = "black",
+        alpha = 1, size = 4,
+        angle= label_data$angle, inherit.aes = FALSE) +
+      ggtitle(title)
+  }
+  else if(template == "cirbar5"){
+    data <- data.frame(
+      id = seq(1, length(data$value)),
+      individual = data$group,
+      value = round(data$value/sum(data$value)*100, 0)
+    )
+
+    data$individual <- paste(
+      data$individual,
+      scales::label_percent(accuracy = 1)(data$value/sum(data$value)),
+      sep = "\n")
+
+    label_data <- data
+    number_of_bar <- nrow(label_data)
+    angle <-  90 - 360 * (label_data$id-0.5) /number_of_bar
+    label_data$hjust<-ifelse( angle < -90, 1, 0)
+    label_data$angle<-ifelse(angle < -90, angle+180, angle)
+
+    ggplot(data, aes(x=as.factor(id), y=value, color = 3)) +
+      geom_bar(stat="identity", fill = alpha("lightblue", 0.8)) +
+      ylim(-10, max(data$value) + 10) +
+      theme_void() +
+      theme(
+        axis.text = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(
+          family = "mono", color="black", size=16, face="bold", hjust = 0.5),
+        legend.position="none"
+      ) +
+      coord_polar(start = 0) +
+      geom_shadowtext(
+        data=label_data,
+        aes(x=id, y=value+10, label=individual, hjust=hjust),
+        family = "mono", color="lightblue", fontface="bold", bg.color = "darkcyan",
+        alpha = 1, size = 4,
+        angle= label_data$angle, inherit.aes = FALSE) +
+      ggtitle(title)
+  }
+  # spider chart ----
+  else if(template == "spider1"){
+    lbls <- paste(data_n$group, data_n$value, sep = " : ")
+    lbls <- paste(lbls, "%", sep = "")
+
+    b <- matrix(nrow = 3,
+                ncol = length(data$value),
+                dimnames = list(c("min", "max", "value"), lbls)
+    )
+    b[1,] <- rep(max(data_n$value), length(data_n$value))
+    b[2,] <- rep(0, length(data_n$value))
+    b[3,] <- data_n$value
+    b <- as.data.frame(b)
+
+    radarchart(b,
+               axistype = 1,
+               pcol = "darkred",
+               pfcol = alpha("orangered", 0.7),
+               plwd = 3,
+               cglcol = "darkred",
+               cglty = 1,
+               axislabcol = "darkred",
+               cglwd = 0.5,
+               caxislabels=seq(0,max(b[3,]), length.out = 5))
+  }
+  else if(template == "spider2"){
+    lbls <- paste(data_n$group, data_n$value, sep = " : ")
+    lbls <- paste(lbls, "%", sep = "")
+
+    b <- matrix(nrow = 3,
+                ncol = length(data$value),
+                dimnames = list(c("min", "max", "value"), lbls)
+    )
+    b[1,] <- rep(max(data_n$value), length(data_n$value))
+    b[2,] <- rep(0, length(data_n$value))
+    b[3,] <- data_n$value
+    b <- as.data.frame(b)
+
+    radarchart(b,
+               axistype = 1,
+               pcol = "darkolivegreen",
+               pfcol = alpha("darkcyan", 0.3),
+               plwd = 2,
+               cglcol = "grey",
+               cglty = 4,
+               axislabcol = "black",
+               cglwd = 2,
+               caxislabels=seq(0,max(b[3,]), length.out = 5))
+  }
+  else if(template == "spider3"){
+    lbls <- paste(data_n$group, data_n$value, sep = " : ")
+    lbls <- paste(lbls, "%", sep = "")
+
+    b <- matrix(nrow = 3,
+                ncol = length(data$value),
+                dimnames = list(c("min", "max", "value"), lbls)
+    )
+    b[1,] <- rep(max(data_n$value), length(data_n$value))
+    b[2,] <- rep(0, length(data_n$value))
+    b[3,] <- data_n$value
+    b <- as.data.frame(b)
+
+    radarchart(b,
+               axistype = 0,
+               pcol = "skyblue",
+               pfcol = alpha("skyblue", 0.3),
+               plwd = 3,
+               cglcol = "grey2",
+               cglty = 3,
+               cglwd = 2
+    )
+  }
+  else if(template == "spider4"){
+    lbls <- paste(data_n$group, data_n$value, sep = " : ")
+    lbls <- paste(lbls, "%", sep = "")
+
+    b <- matrix(nrow = 3,
+                ncol = length(data$value),
+                dimnames = list(c("min", "max", "value"), lbls)
+    )
+    b[1,] <- rep(max(data_n$value), length(data_n$value))
+    b[2,] <- rep(0, length(data_n$value))
+    b[3,] <- data_n$value
+    b <- as.data.frame(b)
+
+    radarchart(b,
+               axistype = 1,
+               pcol = "red",
+               plwd = 4,
+               cglcol = "grey",
+               cglty = 1,
+               axislabcol = "black",
+               cglwd = 0.5,
+               caxislabels=seq(0,max(b[3,]), length.out = 5)
+               )
+  }
+  else if(template == "spider5"){
+    lbls <- paste(data_n$group, data_n$value, sep = " : ")
+    lbls <- paste(lbls, "%", sep = "")
+
+    b <- matrix(nrow = 3,
+                ncol = length(data$value),
+                dimnames = list(c("min", "max", "value"), lbls)
+    )
+    b[1,] <- rep(max(data_n$value), length(data_n$value))
+    b[2,] <- rep(0, length(data_n$value))
+    b[3,] <- data_n$value
+    b <- as.data.frame(b)
+
+    radarchart(b,
+               axistype = 1,
+               pcol = "deeppink",
+               pfcol = alpha("pink", 0.3),
+               plwd = 2,
+               cglcol = "black",
+               cglty = 6,
+               axislabcol = "deeppink",
+               cglwd = 2,
+               caxislabels=seq(0,max(b[3,]), length.out = 5)
+    )
   }
 }

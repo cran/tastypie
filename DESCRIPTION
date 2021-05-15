@@ -1,6 +1,6 @@
 Package: tastypie
 Title: Easy Pie Charts
-Version: 0.0.3
+Version: 0.1.0
 Authors@R: 
     person(given = "Paolo",
            family = "Dalena",
@@ -20,14 +20,16 @@ BugReports: https://github.com/PaoloDalena/tastypie/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Imports: ggplot2, dplyr, scales, RColorBrewer, shadowtext, tibble
+Imports: ggplot2, dplyr, scales, RColorBrewer, shadowtext, tibble,
+        packcircles, fmsb
 Depends: R (>= 2.10)
-Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
+Suggests: knitr, markdown, rmarkdown, testthat (>= 3.0.0), jpeg,
+        patternplot
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2021-03-03 19:57:47 UTC; PaoloMacbook
+Packaged: 2021-05-15 19:23:14 UTC; PaoloMacbook
 Author: Paolo Dalena [aut, cre]
 Maintainer: Paolo Dalena <paolodalena97@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-03-04 02:10:02 UTC
+Date/Publication: 2021-05-15 19:40:02 UTC

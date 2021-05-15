@@ -26,7 +26,7 @@ Type \code{pie_template_list_pro} to display all the available ones for this fun
 \item{title}{A string. If you want, you can specify the title of the graph.}
 }
 \value{
-A ggplot object.
+A ggplot object (or no value if the chosen template is among the spider chart ones).
 In particular, this function returns a pie (or similar) chart according to the
 data, the choice of template, and the other specifications provided.
 }
@@ -61,6 +61,11 @@ pie_bake_pro(
   template = "eye5",
   group_name = "GROUPS:"
 )
+
+pie_bake_pro(
+  data = example,
+  template = "spider2"
+  )
 
 
 }
