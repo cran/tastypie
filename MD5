@@ -1,6 +1,6 @@
-8b82c979fdab46395a411f5b0d2580b4 *DESCRIPTION
+e3bf8377d3a5b55f070c84f73f2b4b22 *DESCRIPTION
 ce8e443fc3bc20c41b5204fc579f0e23 *NAMESPACE
-c0597df97268ef0bfdbf3348dc8b464d *NEWS.md
+b39b53bb0b36310e997d86583570f914 *NEWS.md
 ba072d93acf37c880350f7635203d893 *R/attach_tamarro.R
 37ff7208e64bb82c58c772caa53daa9d *R/bubble_blow.R
 3995e2bf8334b20e982271790539411b *R/data.R
@@ -13,14 +13,14 @@ b67045c0f65a15567650fe3ca3f5d385 *R/pie_bake_pro.R
 c6e9dfc9677b3827c9ddf8dd629213c1 *R/pie_datacheck.R
 ebb059dbf0d4dc1ab094c33ff770e08a *R/pie_discover.R
 31f862ddbefbb48cd8d7a51c6dba1673 *R/pie_templates.R
-1fe54d6e7d158340094e868ba9ed0098 *R/tastypie.R
-1f9efbf4bde91e70dcd9e9e8b6903623 *README.md
-53db46fb6d23127f2303ebd6f5874035 *build/vignette.rds
+a1af3a043796089f04fbec3396c6f2ec *R/tastypie.R
+f76a5c35747a24f72ecdfd355c03550c *README.md
+2664da5f988c38fae74d7656ed464ba1 *build/vignette.rds
 2d261f56d85c13190ec6b528ecbf060b *data/pie_template_list.rda
 5b3b9f0cca7b8336e70ce39821c53a73 *data/pie_template_list_pro.rda
 5ebcffff7590fe7d3c1ef6966b57bb42 *inst/doc/available_templates.R
 e7897dc78744814457efb35268cb4e8b *inst/doc/available_templates.Rmd
-dc00ce3eb6683a97860302a9303ec80b *inst/doc/available_templates.html
+28cda5526e3be6d24f5decfb4febd42f *inst/doc/available_templates.html
 cd377ef68d7bd2ee1e85ab4199ca8cb7 *inst/img/bob.jpeg
 06d7effc565d6d0e758233382080f21a *inst/img/logo.jpeg
 c88539211f99b21cf65d9d00a22756d5 *inst/img/mark.jpeg
@@ -55,7 +55,7 @@ c5b5bbd6362b1cb55ddb6d7b9aad7db6 *man/pie_discover.Rd
 38d4068d9fbc132c8b4b8b8c8fe878ef *man/pie_template_list.Rd
 7f9fc6d210d51692e629654b03a8bf08 *man/pie_template_list_pro.Rd
 6e31cbc6f83e5f72866564d4334b447f *man/pie_templates.Rd
-adbc915c086291e319cb9071ce56f57e *man/tastypie.Rd
+438516c8a6c80dd45bb7d3a0e39bda42 *man/tastypie.Rd
 6237ac258fc9c4d4023d76aabbd88347 *tests/testthat.R
 147c0d15423233d644bcdf6343c0316d *tests/testthat/Rplots.pdf
 0c99a77632d032c274c908fae613b67d *tests/testthat/test-addimages.R
