@@ -8,20 +8,25 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tastypie)](https://CRAN.R-project.org/package=tastypie)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![](https://img.shields.io/badge/devel%20version-0.1.0-darkolivegreen.svg)](https://github.com/PaoloDalena/tastypie)
+[![](https://img.shields.io/badge/devel%20version-0.1.2-darkolivegreen.svg)](https://github.com/PaoloDalena/tastypie)
 [![License:
 GPL-3](https://img.shields.io/badge/license-GPL--3-yellow.svg)](https://cran.r-project.org/web/licenses/GPL-3)
 [![](https://img.shields.io/github/languages/code-size/PaoloDalena/tastypie.svg)](https://github.com/PaoloDalena/tastypie)
 [![R-CMD-check](https://github.com/PaoloDalena/tastypie/workflows/R-CMD-check/badge.svg)](https://github.com/PaoloDalena/tastypie/actions)
+[![R-CMD-check](https://github.com/PaoloDalena/tastypie/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaoloDalena/tastypie/actions/workflows/R-CMD-check.yaml)
+[![DOI](https://zenodo.org/badge/DOI/10.32614/cran.package.tastypie.svg)](https://doi.org/10.32614/cran.package.tastypie)
+[![](https://cranlogs.r-pkg.org/badges/tastypie)](https://CRAN.R-project.org/package=tastypie)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/tastypie)](https://cranlogs.r-pkg.org/badges/grand-total/tastypie)
+
 <!-- badges: end -->
 
-  - Add figures to the pie charts, easily create circular packing
-    charts, radar charts and circular barplots: **check out what’s new
-    in `{tastypie}` `0.1.0`**
-    [here](https://paolodalena.github.io/tastypie/news/index.html)\!
-  - Would you like to **join the `{tastypie}` crew and get a free
-    `tasty_tshirt`**? Find out the details
-    [here](https://paolodalena.github.io/tastypie/articles/tasty_tshirts.html).
+- Add figures to the pie charts, easily create circular packing charts,
+  radar charts and circular barplots: **check out what’s new in
+  `{tastypie}` `0.1.0`**
+  [here](https://paolodalena.github.io/tastypie/news/index.html)!
+- Would you like to **join the `{tastypie}` crew and get a free
+  `tasty_tshirt`**? Find out the details
+  [here](https://paolodalena.github.io/tastypie/articles/tasty_tshirts.html).
 
 You only need to type *“why pie charts are bad”* on
 [Google](https://www.google.com/search?q=why+pie+charts+are+bad) to find
@@ -44,19 +49,16 @@ than from something like this:
 <th style="text-align:left;">
 
 InYourOpinion
-
 </th>
 
 <th style="text-align:right;">
 
 Value
-
 </th>
 
 <th style="text-align:right;">
 
 Proportion
-
 </th>
 
 </tr>
@@ -70,19 +72,16 @@ Proportion
 <td style="text-align:left;">
 
 My mum
-
 </td>
 
 <td style="text-align:right;">
 
 60
-
 </td>
 
 <td style="text-align:right;">
 
 0.2
-
 </td>
 
 </tr>
@@ -92,19 +91,16 @@ My mum
 <td style="text-align:left;">
 
 Is
-
 </td>
 
 <td style="text-align:right;">
 
 90
-
 </td>
 
 <td style="text-align:right;">
 
 0.3
-
 </td>
 
 </tr>
@@ -114,19 +110,16 @@ Is
 <td style="text-align:left;">
 
 Strange?
-
 </td>
 
 <td style="text-align:right;">
 
 150
-
 </td>
 
 <td style="text-align:right;">
 
 0.5
-
 </td>
 
 </tr>
@@ -231,6 +224,13 @@ exblow <- data.frame(
   c(33, 24, 54, 12, 43, 88, 66, 78)
 )
 bubble_blow(exblow, template = "bub2", perc = "below", title = "Easy bubbles:")
+#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+#> ℹ Please use `linewidth` instead.
+#> ℹ The deprecated feature was likely used in the tastypie package.
+#>   Please report the issue at <https://github.com/PaoloDalena/tastypie/issues>.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+#> generated.
 ```
 
 <img src="man/figures/README-unnamed-chunk-10-1.png" width="75%" height="75%" style="display: block; margin: auto;" />
@@ -255,7 +255,7 @@ pie_templates("eaten4", n_groups = 9)
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="75%" height="75%" style="display: block; margin: auto;" />
 
 Do you want a list of all the available templates? Check the
-**`pie_template_list`** and the **`pie_template_list_pro`** vectors\!
+**`pie_template_list`** and the **`pie_template_list_pro`** vectors!
 
 ``` r
 pie_template_list # to be used with pie_bake()
@@ -279,10 +279,10 @@ Do you want to see all possible templates displayed?
 you can find what you are looking for.
 
 Do you want to add some images to your tasty pie chart? You can do it
-easily with **`pie_addimages()`**\! Check out an example of how to do it
+easily with **`pie_addimages()`**! Check out an example of how to do it
 [here](https://paolodalena.github.io/tastypie/articles/available_templates.html#example-of-usage-of-pie-addimages-).
 
-**Be curious, there are many tasty pies\!**
+**Be curious, there are many tasty pies!**
 
 ## Feature request
 

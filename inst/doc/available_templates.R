@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -16,7 +16,7 @@ for(i in pie_template_list){
   print(pie_bake(ex, template = i, perc = TRUE, title = i))
 }
 
-## ---- fig.align = "center", out.width="75%", out.height="75%"-----------------
+## ----fig.align = "center", out.width="75%", out.height="75%"------------------
 ex <- data.frame(
   LETTERS[1:5],
   c(65, 24, 54, 12, 43)
@@ -26,7 +26,7 @@ for(i in pie_template_list_pro){
   print(pie_bake_pro(ex, template = i, title = i))
 }
 
-## ---- fig.align = "center", out.width="75%", out.height="75%"-----------------
+## ----fig.align = "center", out.width="75%", out.height="75%"------------------
 exblow <- data.frame(
   LETTERS[1:8],
   c(33, 24, 54, 12, 43, 88, 66, 78)
@@ -52,7 +52,7 @@ df <- data.frame(
 )
 mypie <- pie_bake(df, template = "basic1")
 
-## ---- fig.align = "center", out.width="75%", out.height="75%", dpi = 100------
+## ----fig.align = "center", out.width="75%", out.height="75%", dpi = 100-------
 pie_addimages(
   mypie = mypie,
   imglist = imgs,

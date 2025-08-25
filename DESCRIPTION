@@ -1,11 +1,12 @@
 Package: tastypie
 Title: Easy Pie Charts
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     person(given = "Paolo",
            family = "Dalena",
            role = c("aut", "cre"),
-           email = "paolodalena97@gmail.com")
+           email = "paolodalena97@gmail.com",
+           comment = c(ORCID = "0000-0003-2920-9572"))
 Description: You only need to type 'why pie charts are bad' on Google to find
     thousands of articles full of (valid) reasons why other types of charts 
     should be preferred over this one.
@@ -15,7 +16,8 @@ Description: You only need to type 'why pie charts are bad' on Google to find
     In this R package there are useful functions to make 'tasty' pie charts 
     immediately by exploiting the many cool templates provided.
 License: GPL-3
-URL: https://paolodalena.github.io/tastypie/
+URL: https://paolodalena.github.io/tastypie/,
+        https://github.com/PaoloDalena/tastypie
 BugReports: https://github.com/PaoloDalena/tastypie/issues
 Encoding: UTF-8
 LazyData: true
@@ -28,8 +30,9 @@ Suggests: knitr, markdown, rmarkdown, testthat (>= 3.0.0), jpeg,
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2023-09-06 17:40:27 UTC; PaoloMacbook
-Author: Paolo Dalena [aut, cre]
+Packaged: 2025-08-25 14:01:49 UTC; PaoloMacbook
+Author: Paolo Dalena [aut, cre] (ORCID:
+    <https://orcid.org/0000-0003-2920-9572>)
 Maintainer: Paolo Dalena <paolodalena97@gmail.com>
 Repository: CRAN
-Date/Publication: 2023-09-06 18:00:06 UTC
+Date/Publication: 2025-08-25 14:30:02 UTC
